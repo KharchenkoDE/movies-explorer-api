@@ -16,6 +16,6 @@
 
 ## Ссылки на проект
 
-IP 
+IP 84.201.164.214
 
-Backend https://api.kharchenkode-pw15.nomoredomains.sbs
+Backend https://api.kharchenkode.nomoreparties.co
