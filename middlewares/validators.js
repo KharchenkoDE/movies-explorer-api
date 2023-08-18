@@ -47,7 +47,7 @@ const validateAuthInfo = celebrate({
 
 const validateProfileInfo = celebrate({
   body: {
-    email: Joi.string().required(),
+    email: Joi.string().required().email(),
     name: Joi.string().required().min(2).max(30),
   },
 });
