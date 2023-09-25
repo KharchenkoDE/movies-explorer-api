@@ -8,7 +8,7 @@ const {
 const auth = (req, res, next) => {
   const { authorization } = req.headers;
   if (!authorization || !authorization.startsWith('Bearer ')) {
-    next(new UnauthorizedError('Необходима авторизация'));
+    next(new UnauthorizedError('При авторизации произошла ошибка. Токен не передан или передан не в том формате'));
     return;
   }
   const token = authorization.replace('Bearer ', '');
@@ -17,7 +17,7 @@ const auth = (req, res, next) => {
   try {
     payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
   } catch (error) {
-    next(new UnauthorizedError('Необходима авторизация'));
+    next(new UnauthorizedError('При авторизации произошла ошибка. Токен не передан или передан не в том формате'));
     return;
   }
   req.user = payload;
