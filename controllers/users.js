@@ -60,7 +60,7 @@ const createUser = (req, res, next) => {
       if (error.name === 'ValidationError') {
         next(new BadRequestError(error.message));
       } else if (error.code === 11000) {
-        next(new ConflictError('Пользователь с этим email уже существует'));
+        next(new ConflictError('Пользователь с таким email уже существует'));
       } else {
         next(error);
       }

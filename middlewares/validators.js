@@ -32,23 +32,31 @@ const validateMovieInfo = celebrate({
 
 const validateUserInfo = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
+    name: Joi.string().min(2).max(30)
+      .messages({
+        'string.min': 'Имя не должно быть короче 2 символов',
+        'string.max': 'Имя не должно быть длиннее 30 символов',
+      }),
     password: Joi.string().required(),
-    email: Joi.string().required().email(),
+    email: Joi.string().required().email().messages({ 'string.email': 'Невалидный Email' }),
   }),
 });
 
 const validateAuthInfo = celebrate({
   body: Joi.object().keys({
-    email: Joi.string().required().email(),
+    email: Joi.string().required().email().messages({ 'string.email': 'Невалидный Email' }),
     password: Joi.string().required(),
   }),
 });
 
 const validateProfileInfo = celebrate({
   body: {
-    email: Joi.string().required().email(),
-    name: Joi.string().required().min(2).max(30),
+    email: Joi.string().required().email().messages({ 'string.email': 'Невалидный Email' }),
+    name: Joi.string().required().min(2).max(30)
+      .messages({
+        'string.min': 'Имя не должно быть короче 2 символов',
+        'string.max': 'Имя не должно быть длиннее 30 символов',
+      }),
   },
 });
 
